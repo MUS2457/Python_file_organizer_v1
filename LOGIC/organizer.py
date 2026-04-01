@@ -9,13 +9,14 @@ def detect_extension(filename):
 
 
 def detect_category(filename):
-    extension = detect_extension(filename)
+    extension = detect_extension(filename).lower()
 
     for category, extensions in file_categories.items():
         if extension in extensions:
             return category
 
     return "others"
+
 
 def scan_folder(folders):
     file_s = []
@@ -26,14 +27,14 @@ def scan_folder(folders):
 
     return file_s
 
+
 def organize_folder(folder_path):  # function that organizes files inside a folder given by the user
 
     files = scan_folder(folder_path)
 
     for file in files:
 
-        extension = detect_extension(file)
-        category = detect_category(extension)
+        category = detect_category(file)
 
         category_path = os.path.join(folder_path, category)
         # build the path of the category folder
@@ -55,8 +56,3 @@ def organize_folder(folder_path):  # function that organizes files inside a fold
 
         shutil.move(source, destination)
         # move the file from its original location to the new category folder
-
-
-
-
-
