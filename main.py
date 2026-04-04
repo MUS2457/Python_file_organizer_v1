@@ -11,7 +11,7 @@ def main () :
         elif not user :
             print("Please enter a valid folder path or 'exit' to quit : ")
             continue
-
+        print(f"the number of files that has been found : {len(organizer.scan_folder(user))}")
         organizer.organize_folder(user)
 
 
